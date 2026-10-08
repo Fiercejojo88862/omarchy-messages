@@ -12,15 +12,22 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 msg() { printf '\033[1;32m==>\033[0m %s\n' "$*"; }
 warn() { printf '\033[1;33m[!]\033[0m %s\n' "$*"; }
 
-# 1. System packages (Arch names — upstream README uses apt)
+# 1. System packages (Arch names — upstream README uses apt).
+# NOTE: bluez-obex (not bluez-obexd) on Arch; ofono is AUR-only (calls are optional).
 msg "Installing system packages (pacman)…"
 sudo pacman -S --needed --noconfirm \
-  bluez bluez-utils bluez-obexd \
+  bluez bluez-utils bluez-obex \
   python-dbus python-gobject \
   gtk4 libadwaita \
   python-virtualenv \
-  wl-clipboard \
-  ofono
+  wl-clipboard
+
+if pacman -Si ofono >/dev/null 2>&1; then
+  sudo pacman -S --needed --noconfirm ofono
+else
+  warn "ofono not in official repos (AUR-only) — skipping. Calls need it; see docs/TROUBLESHOOTING.md."
+  warn "To add calls later:  yay -S ofono   (or: paru -S ofono)"
+fi
 
 sudo systemctl enable --now bluetooth 2>/dev/null || true
 
