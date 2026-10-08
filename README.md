@@ -52,9 +52,22 @@ iphonebridge-ui --messages
 
 No names, no phone numbers, no Bluetooth MACs, no message history, no `local.env`. Pairing state stays on your machine under `~/.config/iphonebridge/` and is never committed (see `.gitignore`).
 
+## Layout
+
+```text
+omarchy-messages/
+├── install.sh            # one-shot Arch/Omarchy installer (idempotent)
+├── assets/               # shipped verbatim: wrapper, .desktop, user service
+├── docs/
+│   └── TROUBLESHOOTING.md
+├── README.md
+├── LICENSE
+└── .gitignore            # blocks local.env, history, contacts DBs
+```
+
 ## Troubleshooting
 
-See [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
+See [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md).
 
 ## Credits / License
 
