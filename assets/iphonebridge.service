@@ -1,0 +1,19 @@
+[Unit]
+Description=iphonebridge — iPhone to Linux Bluetooth bridge
+Documentation=https://github.com/gabrielmeir53/iphonebridge
+After=bluetooth.target graphical-session.target dbus.socket
+Wants=bluetooth.target
+Requires=dbus.socket
+
+[Service]
+Type=simple
+EnvironmentFile=-%h/.config/iphonebridge/local.env
+ExecStart=%h/.local/src/iphonebridge/.venv/bin/iphonebridge run
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

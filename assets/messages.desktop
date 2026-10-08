@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Messages
+Comment=See and respond to iPhone texts from your desktop
+Exec=iphonebridge-ui --messages
+Icon=mail-unread
+Terminal=false
+Type=Application
+Categories=Network;Chat;
+Keywords=messages;sms;imessage;iphone;text;chat;
+StartupNotify=true

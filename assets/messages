@@ -1,0 +1,3 @@
+#!/bin/bash
+# Messages — opens iphonebridge straight to the Messages tab.
+exec iphonebridge-ui --messages "$@"

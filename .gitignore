@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+
+# Never commit pairing state, history, or contacts
+local.env
+*.jsonl
+*.db
+*.log
+.config/
